@@ -11,13 +11,13 @@ namespace HashingService.Controllers
         [HttpGet]
         public string Hash([FromBody] string value)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(value);
+            var bytes = Encoding.UTF8.GetBytes(value);
 
             using (var algorithm = SHA256.Create())
             {
                 var hashedBytes = algorithm.ComputeHash(bytes);
 
-		return GetHashString(hashedBytes);
+                return GetHashString(hashedBytes);
             }
         }
 
